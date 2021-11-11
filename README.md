@@ -1,2 +1,84 @@
 # cox-svelte
-An adapter of the Cox library for the front-end framework Svelte
+
+Cox is an modern fully-typed Typescript library to handle internationalisation.
+
+Cox-svelte is an adapter of the Cox library for the front-end framework Svelte.
+
+Comparing to standard internationalisation libraries, it has the following features:
+
+- **type safe**. Using Typescript, Cox ensures that you have no missing key for any locale at any moment. Even when dealing with many languages, you can deploy in production with confidence: you'll never make a mistake again;
+- **no string key**. Standard internationalisation libraries use this kind of syntax to get a content value: `$t('unsafe.path.to.my.key')`. It is error-prone, very annoying to write and not typed. With Cox, you'll write something like: `$content.safe.path.to.my.key`, with auto-completion and the right typing;
+- **use functions instead of templates**. There are so many languages, dealing with plural, feminine/masculine, and other stuff is very complex. It's actually so complex there is no simple and magic template language that can do it all. Cox is developper-oriented and instead of implementing a complex template language, it lets the developper decide how to to deal with edge cases. The use of the natively embedded `Intl` library is highly encouraged along Cox;
+- **not one huge translation file**. Instead of having one huge `en.json` file for every language, Cox promotes the use of multiples smaller translation files. Typically, you would apply content per-component instead of globally. This improves drastically the developper experience.
+
+## Usage
+
+First, let's create a configuration file that describes all the languages we will implement.
+
+```ts
+/* src/locales.ts */
+import { useLocales } from "cox-svelte"
+
+/**
+ * We want to implement two languages: english and french.
+ * We also indicate that english is the default language.
+ */
+export const { useContent, currentLocale } = useLocales<"en" | "fr">("en")
+```
+
+
+Then let's define a **content file**. A content file can contains anything, as long as it contains the *same type of data for every locale to implement*.
+
+For that, we use the `useContent` function that has just been returned:
+
+```ts
+/* src/content.ts */
+import { useContent } from "./locales"
+
+export const content = useContent({
+  en: {
+    sayHelloToWorld: `Hello world!`,
+    sayHelloTo: (helloTo: string) => `Hello ${helloTo}!`
+  },
+  fr: {
+    sayHelloToWorld: `Bonjour le monde !`,
+    sayHelloTo: (helloTo: string) => `Bonjour ${helloTo} !`
+  },
+})
+```
+
+That's great! We just defined a content file that we can use in our svelte components:
+
+```svelte
+<!-- src/component.svelte -->
+<script lang="ts">
+  import { content } from './content'
+</script>
+
+<p>
+  {content.sayHelloToWorld}
+</p>
+
+<p>
+  {content.sayHelloTo('magnificent you')}
+</p>
+```
+
+
+### Changing current locale
+
+`currentLocale` is a writable store so it is very easy to change it programmatically:
+
+```ts
+import { currentLocale } from "./locales"
+
+currentLocale.set("fr")
+```
+
+Alternatively if you are inside a `.svelte` file you can use the store syntax:
+
+```ts
+$currentLocale = "fr"
+```
+
+Thanks to the magic of stores, this will automatically update *all content data* in the entire application.
