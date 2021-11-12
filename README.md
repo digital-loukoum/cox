@@ -56,11 +56,11 @@ That's great! We just defined a content file that we can use in our svelte compo
 </script>
 
 <p>
-  {content.sayHelloToWorld}
+  { $content.sayHelloToWorld }
 </p>
 
 <p>
-  {content.sayHelloTo('magnificent you')}
+  { $content.sayHelloTo('magnificent you') }
 </p>
 ```
 
