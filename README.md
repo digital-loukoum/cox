@@ -92,7 +92,7 @@ Thanks to the magic of stores, this will automatically update *all content data*
 
 ## Note on architecture
 
-Cox promotes the use of one content file per component. This is ideal for huge codebases or codebases that need to scale
+Cox promotes the use of one content file per component. This is ideal for codebases that will scale. As a developer, you won't get lost with one humongous json translation file.
 
 Not all components should have their respective content file though. For example, if you follow the [atomic design methodology](https://atomicdesign.bradfrost.com/chapter-2/):
 
