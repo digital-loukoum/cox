@@ -90,7 +90,7 @@ $currentLocale = "fr"
 Thanks to the magic of stores, this will automatically update *all content data* in the entire application.
 
 
-### Note on architecture
+## Note on architecture
 
 Cox promotes the use of one content file per component. This is ideal for huge codebases or codebases that need to scale
 
