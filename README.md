@@ -92,3 +92,10 @@ Thanks to the magic of stores, this will automatically update *all content data*
 
 ### Note on architecture
 
+Cox promotes the use of one content file per component. This is ideal for huge codebases or codebases that need to scale
+
+Not all components should have their respective content file though. For example, if you follow the [atomic design methodology](https://atomicdesign.bradfrost.com/chapter-2/):
+
+- `atoms` and `molecules` should not be related to a content file,
+- `organisms` and `templates` can be related to a content file,
+- `pages` should not be related to a content file - as they import templates and organisms that have this responsibility.
