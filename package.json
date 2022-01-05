@@ -1,13 +1,13 @@
 {
   "name": "@digitak/cox-svelte",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "repository": "https://github.com/digital-loukoum/cox-svelte.git",
   "author": "Gin Quin <gin.the.quin@gmail.com>",
   "license": "MIT",
   "scripts": {
     "build": "esrun scripts/build",
     "test": "esrun test",
-    "deploy": "pnpm build && pnpm publish"
+    "deploy": "pnpm build && yarn publish"
   },
   "main": "./index.js",
   "exports": {
