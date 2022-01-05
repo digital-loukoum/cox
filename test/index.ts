@@ -1,8 +1,8 @@
-import { useLocales } from "../source"
+import { defineLocales } from "../source"
 
-const { useContent, currentLocale } = useLocales<"fr" | "en">("en")
+const { defineContent, currentLocale } = defineLocales<"fr" | "en">("en")
 
-const content = useContent({
+const content = defineContent({
 	fr: {
 		sayHello: (name: string) => `Bonjour ${name} !`,
 	},
@@ -12,7 +12,7 @@ const content = useContent({
 })
 
 content.subscribe(value => {
-	console.log(value.sayHello("Coco"))
+	console.log(value.sayHello("Foo"))
 })
 
 setTimeout(() => currentLocale.set("fr"), 1000)

@@ -7,7 +7,7 @@
   "scripts": {
     "build": "esrun scripts/build",
     "test": "esrun test",
-    "deploy": "yarn build && yarn publish"
+    "deploy": "pnpm build && pnpm publish"
   },
   "main": "./index.js",
   "exports": {

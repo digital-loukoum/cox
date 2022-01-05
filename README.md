@@ -11,31 +11,37 @@ Comparing to standard internationalisation libraries, it has the following featu
 - **use functions instead of templates**. There are so many languages, dealing with plural, feminine/masculine, and other stuff is very complex. It's actually so complex there is no simple and magic template language that can do it all. Cox is developper-oriented and instead of implementing a complex template language, it lets the developper decide how to to deal with edge cases. The use of the natively embedded `Intl` library is highly encouraged along Cox.
 - **not one huge translation file**. Instead of having one huge `en.json` file for every language, Cox promotes the use of multiples smaller translation files. Typically, you would apply content per-component instead of globally. This improves drastically the developper experience.
 
+### When to use and when to not use
+
+Cox is a perfect choice when you develop an application with few languages (maximum 4-5 languages).
+
+I you need to develop a product that will be translated **a lot** of languages, Cox is not recommended. For these use cases, we advice to use a software with an integrated graphical user interface like Weblate.
+
 ## Usage
 
 First, let's create a configuration file that describes all the languages we will implement.
 
 ```ts
 /* src/locales.ts */
-import { useLocales } from "cox-svelte"
+import { defineLocales } from "cox-svelte"
 
 /**
  * We want to implement two languages: english and french.
  * We also indicate that english is the default language.
  */
-export const { useContent, currentLocale } = useLocales<"en" | "fr">("en")
+export const { defineContent, currentLocale } = defineLocales<"en" | "fr">("en")
 ```
 
 
 Then let's define a **content file**. A content file can contains anything, as long as it contains the *same type of data for every locale to implement*.
 
-For that, we use the `useContent` function that has just been returned:
+For that, we use the `defineContent` function that has just been returned:
 
 ```ts
 /* src/content.ts */
-import { useContent } from "./locales"
+import { defineContent } from "./locales"
 
-export const content = useContent({
+export const content = defineContent({
   en: {
     sayHelloToWorld: `Hello world!`,
     sayHelloTo: (helloTo: string) => `Hello ${helloTo}!`
@@ -47,7 +53,7 @@ export const content = useContent({
 })
 ```
 
-That's great! We just defined a content file that we can use in our svelte components:
+Great, now we can use our newly defined content in our svelte components:
 
 ```svelte
 <!-- src/component.svelte -->
@@ -82,3 +88,7 @@ $currentLocale = "fr"
 ```
 
 Thanks to the magic of stores, this will automatically update *all content data* in the entire application.
+
+
+### Note on architecture
+
