@@ -5,7 +5,7 @@ console.log("Cleaning package...")
 fs.rmSync("package", { force: true, recursive: true })
 
 console.log("Compiling typescript...")
-execSync("tsc")
+execSync("tsc", { stdio: "inherit" })
 
 console.log("Copying configuration files...")
 fs.copyFileSync("./README.md", "./package/README.md")

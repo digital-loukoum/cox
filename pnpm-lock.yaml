@@ -5,14 +5,14 @@ specifiers:
   '@digitak/tsc-esm': ^3.0.2
   '@types/node': ^16.11.7
   svelte: ^3
-  typescript: ^4.5.4
+  typescript: ^4.7.0-dev.20220419
 
 devDependencies:
   '@digitak/esrun': 3.1.2
   '@digitak/tsc-esm': 3.0.2
   '@types/node': 16.11.19
   svelte: 3.44.3
-  typescript: 4.5.4
+  typescript: 4.7.0-dev.20220419
 
 packages:
 
@@ -281,8 +281,8 @@ packages:
       is-number: 7.0.0
     dev: true
 
-  /typescript/4.5.4:
-    resolution: {integrity: sha512-VgYs2A2QIRuGphtzFV7aQJduJ2gyfTljngLzjpfW9FoYZF6xuw1W0vW9ghCKLfcWrCFxK81CSGRAvS1pn4fIUg==}
+  /typescript/4.7.0-dev.20220419:
+    resolution: {integrity: sha512-eqezQkTMfRDsbYTW3vWImen8yasP99iykbSLr1BjF7jusxmnvfOVWzXr1zsf+0+FWufBLwpa0rpZBd8TZHWmxg==}
     engines: {node: '>=4.2.0'}
     hasBin: true
     dev: true
