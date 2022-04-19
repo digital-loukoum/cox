@@ -1,8 +1,6 @@
-# cox-svelte
+# cox
 
-Cox is an modern fully-typed Typescript library to handle internationalisation.
-
-Cox-svelte is an adapter of the Cox library for the front-end framework Svelte.
+Cox is an modern fully-typed Typescript and SvelteKit library to handle internationalisation.
 
 Comparing to standard internationalisation libraries, it has the following features:
 
@@ -23,7 +21,7 @@ First, let's create a configuration file that describes all the languages we wil
 
 ```ts
 /* src/locales.ts */
-import { defineLocales } from "cox-svelte"
+import { defineLocales } from "@digitak/cox"
 
 /**
  * We want to implement two languages: english and french.
@@ -53,7 +51,7 @@ export const content = defineContent({
 })
 ```
 
-Great, now we can use our newly defined content in our svelte components:
+Now we can use our newly defined content in our svelte components:
 
 ```svelte
 <!-- src/component.svelte -->

@@ -1,7 +1,7 @@
 {
-	"name": "@digitak/cox-svelte",
+	"name": "@digitak/cox",
 	"version": "1.1.0",
-	"repository": "https://github.com/digital-loukoum/cox-svelte.git",
+	"repository": "https://github.com/digital-loukoum/cox.git",
 	"author": "Gin Quin <gin.the.quin@gmail.com>",
 	"license": "MIT",
 	"scripts": {
