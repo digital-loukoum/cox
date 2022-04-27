@@ -4,6 +4,7 @@
 	"repository": "https://github.com/digital-loukoum/cox.git",
 	"author": "Gin Quin <gin.the.quin@gmail.com>",
 	"license": "MIT",
+	"type": "module",
 	"scripts": {
 		"dev": "esrun --watch test",
 		"test": "esrun test",
