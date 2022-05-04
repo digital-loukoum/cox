@@ -13,7 +13,10 @@ import "./build"
 console.log(`Starting deploy...`)
 
 try {
-	execSync(`npm publish`, { cwd: "./package" })
+	execSync(`npm publish --access public`, {
+		cwd: "./package",
+		stdio: "inherit",
+	})
 } catch (error) {
 	console.log(`[－－－ An error occured during deploy －－－]`)
 	console.log(error, "\n")
